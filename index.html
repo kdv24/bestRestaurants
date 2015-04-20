@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" ng-app='bestRestaurants'>
+    <head>
+        <meta charset="UTF-8">
+        <title>Best Restaurants</title>
+        <script src="lib/angular.js"></script>
+        <script src="app.js"></script>
+        <script src="js/bestRestaurants.js"></script>
+        <link rel="stylesheet" href="css/bootstrap.css">
+    </head>
+    <body>
+        <div class='container' ng-controller='RestaurantsCtrl'>
+            <div class='row'>
+                <div class='col-md-8'>
+                    <h2>New Restaurant</h2>
+                    <form class='form-inline' ng-submit='addRestaurant()'>
+                        <div class='form-group'>
+                            <input type="text" ng-model='restaurantName' class='form-control' placeholder='Enter the name' required>
+                        </div> <br>
+                        <div class='form-group'>
+                            <input type="text" ng-model='restaurantLocation' class='form-control' placeholder='Enter the location' required>
+                        </div> <br>
+                        <div class='form-group'>
+                            <input type="text" ng-model='restaurantPrice' class='form-control' placeholder='Enter the price range' required>
+                        </div> <br>
+                        <div class='form-group'>
+                            <input type="text" ng-model='restaurantType' class='form-control' placeholder='Enter the type of food' required>
+                        </div> <br>
+                        <button type='submit' class='btn btn-success'>Add</button>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </body>
+</html>
