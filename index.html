@@ -7,11 +7,25 @@
         <script src="app.js"></script>
         <script src="js/bestRestaurants.js"></script>
         <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/styles.css">
+
     </head>
     <body>
         <div class='container' ng-controller='RestaurantsCtrl'>
+            <div class="row">
+                <div class='col-sm-12 page-header'>
+                    <h4>Search</h4>
+                        <form class="form-inline" role="form">
+                            <div class='form-group'>
+                                <input ng-model="searchName" type="text" class="form-control" id="name" placeholder="Search">
+                            </div>
+                        </form>
+                </div>
+            </div>
+
+
             <div class='row'>
-                <div class='col-md-8'>
+                <div class='col-md-8 col-sm-6'>
                     <h2>New Restaurant</h2>
                     <form class='form-inline' ng-submit='addRestaurant()'>
                         <div class='form-group'>
@@ -41,13 +55,32 @@
                     </form>
 
                 </div>
-                <div class="col-md-4">
-                    <h2>Restaurant List</h2>
-                    <ul ng-repeat="item in restaurants">
-                        <h3><em>{{item.name}}</em></h3>
+                <div class="col-md-4 col-sm-6">
+                    <h2 ng-show='restaurants.length && filtered.length'>Restaurant List</h2>
+                    <h2 ng-show='restaurants.length && !filtered.length'>No Matches</h2>
+                    <ul ng-repeat="item in filtered = (restaurants | filter: {name:searchName})">
+<!-- <span ng-repeat="item in filtered = (restaurants | filter:query)"></span> -->
+                    <!-- <ul ng-repeat="item in filtered = ( restaurants | filter:query | as:this.name) "> -->
+                        <span><h3><em>{{item.name}}</em></h3></span>
                         <li>Location : {{item.location}}</li>
                         <li>Price : {{item.price}}</li>
                         <li>Type of food : {{item.type}}</li>
+                        <span ng-click="editing = true" ng-hide="editing" class='btn btn-warning'>Edit</span> <br>
+                        <a ng-click="deleteRestaurant(item)" class='btn btn-danger'>Delete</a>
+                        <span class="form-group" ng-show="editing" ng-submit="editing = false">
+                          <form class="form-inline" role="form">
+                            <input type="text" class="form-control input-sm" ng-model="item.name" placeholder="Name" required/> <br>
+                            <input type="text" class="form-control input-sm" ng-model="item.location" placeholder="Location" required/> <br>
+                            <input type="text" class="form-control input-sm" ng-model="item.price" placeholder="Price" required/> <br>
+                            <label for="type">Type of food :</label> <br>
+                            <input type="radio" class='form-control' ng-model='item.type' ng-checked='' value="French"> French<br>
+                            <input type="radio" class='form-control' ng-model='item.type' value="American"> American<br>
+                            <input type="radio" class='form-control' ng-model='item.type' value="Mexican"> Mexican<br>
+                            <input type="radio" class='form-control' ng-model='item.type' value="Italian"> Italian<br>
+                            <input type="radio" class='form-control' ng-model='item.type' value="Thai"> Thai<br>
+                            <input type="radio" class='form-control' ng-model='item.type' value="Chinese"> Chinese<br>                            <button class="btn btn-default btn-sm" type="submit">Save</button>
+                          </form>
+                        </span>
                     </ul>
 
                 </div>
