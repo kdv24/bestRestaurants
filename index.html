@@ -16,21 +16,43 @@
                     <form class='form-inline' ng-submit='addRestaurant()'>
                         <div class='form-group'>
                             <input type="text" ng-model='restaurantName' class='form-control' placeholder='Enter the name' required>
-                        </div> <br>
+                        </div> <br><br>
                         <div class='form-group'>
                             <input type="text" ng-model='restaurantLocation' class='form-control' placeholder='Enter the location' required>
-                        </div> <br>
+                        </div> <br><br>
                         <div class='form-group'>
-                            <input type="text" ng-model='restaurantPrice' class='form-control' placeholder='Enter the price range' required>
-                        </div> <br>
+                            <label for="price">Select a price range :</label> <br>
+                            <select id="restaurantPrice" ng-model='restaurantPrice' name="restaurantPrice" class="form-control">
+                                <option value="$">$</option>
+                                <option value="$$">$$</option>
+                                <option value="$$$">$$$</option>
+                            </select>
+                        </div> <br><br>
                         <div class='form-group'>
-                            <input type="text" ng-model='restaurantType' class='form-control' placeholder='Enter the type of food' required>
-                        </div> <br>
+                            <label for="type">Type of food :</label> <br>
+                            <input type="radio" class='form-control' ng-model='restaurantType' ng-checked='' value="French"> French<br>
+                            <input type="radio" class='form-control' ng-model='restaurantType' value="American"> American<br>
+                            <input type="radio" class='form-control' ng-model='restaurantType' value="Mexican"> Mexican<br>
+                            <input type="radio" class='form-control' ng-model='restaurantType' value="Italian"> Italian<br>
+                            <input type="radio" class='form-control' ng-model='restaurantType' value="Thai"> Thai<br>
+                            <input type="radio" class='form-control' ng-model='restaurantType' value="Chinese"> Chinese<br>
+                        </div> <br><br>
                         <button type='submit' class='btn btn-success'>Add</button>
                     </form>
 
                 </div>
+                <div class="col-md-4">
+                    <h2>Restaurant List</h2>
+                    <ul ng-repeat="item in restaurants">
+                        <h3><em>{{item.name}}</em></h3>
+                        <li>Location : {{item.location}}</li>
+                        <li>Price : {{item.price}}</li>
+                        <li>Type of food : {{item.type}}</li>
+                    </ul>
 
+                </div>
+
+                </div>
             </div>
         </div>
     </body>
