@@ -14,10 +14,12 @@
         <div class='container' ng-controller='RestaurantsCtrl'>
             <div class="row">
                 <div class='col-sm-12 page-header'>
-                    <h4>Search</h4>
                         <form class="form-inline" role="form">
                             <div class='form-group'>
+                                <label for="searchByName">Search by Name:</label>
                                 <input ng-model="searchName" type="text" class="form-control" id="name" placeholder="Search">
+                                <label for="searchByLocation">Search by Location:</label>
+                                <input ng-model="searchLocation" type="text" class="form-control" id="name" placeholder="Search">
                             </div>
                         </form>
                 </div>
@@ -58,7 +60,7 @@
                 <div class="col-md-4 col-sm-6">
                     <h2 ng-show='restaurants.length && filtered.length'>Restaurant List</h2>
                     <h2 ng-show='restaurants.length && !filtered.length'>No Matches</h2>
-                    <ul ng-repeat="item in filtered = (restaurants | filter: {name:searchName})">
+                    <ul ng-repeat="item in filtered = (restaurants | filter: {name:searchName, location:searchLocation})">
 <!-- <span ng-repeat="item in filtered = (restaurants | filter:query)"></span> -->
                     <!-- <ul ng-repeat="item in filtered = ( restaurants | filter:query | as:this.name) "> -->
                         <span><h3><em>{{item.name}}</em></h3></span>
