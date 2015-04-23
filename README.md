@@ -1,4 +1,4 @@
-# bestRestaurants Exercise with AngularJS for Epicodus
+# Best Restaurants Exercise with AngularJS for Epicodus
 ###Kelly de Vries
  
 #####April 22, 2015
