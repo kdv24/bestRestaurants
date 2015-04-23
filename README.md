@@ -5,7 +5,7 @@
  
 ####Description
  
-This web app was designed to practice AngularJs. It allows the user to add restaurants and filter them based on cuisine, location or price range.
+This web app was designed to practice using filters in AngularJs. It allows the user to add restaurants and filter them based on cuisine, location or price range.
 
 ####Set Up
  
